@@ -9,7 +9,7 @@ data class ExtractResponse(
     val amount: Int?,
     val to: String?,
     val description: String?,
-    val tTypeval: String?,
+    val tType: String?,
     val from: String?,
     val bankName: String?
 )
