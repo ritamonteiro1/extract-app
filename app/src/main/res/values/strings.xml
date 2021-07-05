@@ -1,6 +1,6 @@
 <resources>
     <!--    AndroidManifest -->
-    <string name="app_name">Phi</string>
+    <string name="app_name">Extract</string>
     <!--    activity_extract.xml -->
     <string name="extract_balance_title_text">Seu saldo</string>
     <string name="extract_bank_transition_title_text">Suas movimentações</string>
