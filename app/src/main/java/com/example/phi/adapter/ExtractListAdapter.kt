@@ -51,7 +51,8 @@ class ExtractListAdapter(
             onExtractItemClickListener: OnExtractItemClickListener
         ) {
             itemExtractBankTransactionTypeTextView.text = extractList.description
-            itemExtractNameTextView.text = extractList.to
+            if (extractList.to.isNotEmpty()) itemExtractNameTextView.text = extractList.to
+            else itemExtractNameTextView.text = extractList.from
             itemExtractDateTextView.text = extractList.createdAt
             itemExtractMoneyTextView.text = extractList.amount.convertInToMoney()
             itemView.setOnClickListener {

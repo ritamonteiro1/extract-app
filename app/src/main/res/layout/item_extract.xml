@@ -19,39 +19,34 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Tipo de movimentação bancária" />
 
-    <LinearLayout
-        android:id="@+id/itemExtractLinearLayout"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/itemExtractNameTextView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="start"
+        android:textColor="@color/grey_282"
+        app:layout_constraintEnd_toStartOf="@+id/itemExtractDateTextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemExtractBankTransactionTypeTextView">
+        app:layout_constraintTop_toBottomOf="@+id/itemExtractBankTransactionTypeTextView"
+        tools:text="De quem recebe" />
 
-        <TextView
-            android:id="@+id/itemExtractNameTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:textColor="@color/grey_282"
-            tools:text="De quem recebe" />
+    <TextView
+        android:id="@+id/itemExtractDateTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="end"
+        android:textColor="@color/grey_282"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemExtractBankTransactionTypeTextView"
+        tools:text="25/06">
 
-        <TextView
-            android:id="@+id/itemExtractDateTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:gravity="end"
-            android:textColor="@color/grey_282"
-            android:textStyle="bold"
-            tools:text="25/06">
-
-        </TextView>
-
-    </LinearLayout>
+    </TextView>
 
     <TextView
         android:id="@+id/itemExtractMoneyTextView"
@@ -66,6 +61,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemExtractLinearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/itemExtractNameTextView"
         tools:text="R$ 0,00" />
 </androidx.constraintlayout.widget.ConstraintLayout>

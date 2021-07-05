@@ -20,6 +20,7 @@ import com.example.phi.domains.amount.Amount
 import com.example.phi.domains.amount.AmountResponse
 import com.example.phi.domains.extract.Extract
 import com.example.phi.domains.extract.list.ExtractListResponse
+import com.example.phi.extensions.convertDateToString
 import com.example.phi.extensions.convertInToMoney
 import com.example.phi.extensions.setAlertDialog
 import com.example.phi.extensions.showErrorDialog
@@ -55,26 +56,7 @@ class ExtractActivity : AppCompatActivity() {
                 call: Call<ExtractListResponse>,
                 response: Response<ExtractListResponse>
             ) {
-                loadingDialog?.dismiss()
-                if (response.isSuccessful && response.body() != null) {
-                    extractRecyclerView?.visibility = View.VISIBLE
-                    val extractListResponse = response.body()
-                    val extractList = mapToExtractList(extractListResponse)
-                    treatExtractListEmpty(extractList)
-                    val extractListAdapter = ExtractListAdapter(extractList,
-                        object : OnExtractItemClickListener {
-                            override fun onClick(extractId: String) {
-                                val intent =
-                                    Intent(this@ExtractActivity, ReceiptActivity::class.java)
-                                intent.putExtra(Constants.ID_EXTRACT, extractId)
-                                startActivity(intent)
-                            }
-                        })
-                    setupAdapter(extractListAdapter)
-                } else {
-                    extractRecyclerView?.visibility = View.GONE
-                    this@ExtractActivity.showErrorDialog(getString(R.string.error_balance_field))
-                }
+                showExtractOnResponse(response)
             }
 
             override fun onFailure(call: Call<ExtractListResponse>, t: Throwable) {
@@ -83,6 +65,29 @@ class ExtractActivity : AppCompatActivity() {
                 this@ExtractActivity.showErrorDialog(getString(R.string.error_connection_fail))
             }
         })
+    }
+
+    private fun showExtractOnResponse(response: Response<ExtractListResponse>) {
+        loadingDialog?.dismiss()
+        if (response.isSuccessful && response.body() != null) {
+            extractRecyclerView?.visibility = View.VISIBLE
+            val extractListResponse = response.body()
+            val extractList = mapToExtractList(extractListResponse)
+            treatExtractListEmpty(extractList)
+            val extractListAdapter = ExtractListAdapter(extractList,
+                object : OnExtractItemClickListener {
+                    override fun onClick(extractId: String) {
+                        val intent =
+                            Intent(this@ExtractActivity, ReceiptActivity::class.java)
+                        intent.putExtra(Constants.ID_EXTRACT, extractId)
+                        startActivity(intent)
+                    }
+                })
+            setupAdapter(extractListAdapter)
+        } else {
+            extractRecyclerView?.visibility = View.GONE
+            this@ExtractActivity.showErrorDialog(getString(R.string.error_balance_field))
+        }
     }
 
     private fun setupAdapter(extractListAdapter: ExtractListAdapter) {
@@ -108,7 +113,7 @@ class ExtractActivity : AppCompatActivity() {
     private fun mapToExtractList(extractListResponse: ExtractListResponse?) =
         extractListResponse?.items?.map {
             Extract(
-                it.createdAt?.toString().orEmpty(),
+                it.createdAt?.convertDateToString().orEmpty(),
                 it.id.orEmpty(),
                 it.amount ?: Constants.NULL_AMOUNT_EXTRACT_RESPONSE,
                 it.to.orEmpty(),
