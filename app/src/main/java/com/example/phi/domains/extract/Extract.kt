@@ -1,9 +1,8 @@
 package com.example.phi.domains.extract
 
-import java.util.*
 
 data class Extract(
-    val createdAt: Date,
+    val createdAt: String,
     val id: String,
     val amount: Int,
     val to: String,

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.phi.R
 import com.example.phi.click.listener.OnExtractItemClickListener
 import com.example.phi.domains.extract.Extract
+import com.example.phi.extensions.convertInToMoney
 
 class ExtractListAdapter(
     private val extractList: List<Extract>,
@@ -51,8 +52,8 @@ class ExtractListAdapter(
         ) {
             itemExtractBankTransactionTypeTextView.text = extractList.description
             itemExtractNameTextView.text = extractList.to
-            itemExtractDateTextView.text = extractList.createdAt.toString()
-            itemExtractMoneyTextView.text = extractList.amount.toString()
+            itemExtractDateTextView.text = extractList.createdAt
+            itemExtractMoneyTextView.text = extractList.amount.convertInToMoney()
             itemView.setOnClickListener {
                 onExtractItemClickListener.onClick(extractList.id)
             }
