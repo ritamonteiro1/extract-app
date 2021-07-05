@@ -1,7 +1,7 @@
 package com.example.phi.api
 
 import com.example.phi.domains.AmountResponse
-import com.example.phi.domains.DetailsExtract
+import com.example.phi.domains.DetailsExtractResponse
 import com.example.phi.domains.ExtractListResponse
 import retrofit2.Call
 import retrofit2.http.GET
@@ -24,7 +24,7 @@ interface DataService {
     fun recoverDetailsExtract(
         @Path("id") id: String,
         @Header(TOKEN_HEADER) token: String,
-    ): Call<DetailsExtract>
+    ): Call<DetailsExtractResponse>
 
     companion object {
         const val TOKEN_HEADER = "token"

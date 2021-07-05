@@ -7,10 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.phi.R
 import com.example.phi.click.listener.OnExtractItemClickListener
-import com.example.phi.domains.ExtractResponse
+import com.example.phi.domains.Extract
 
 class ExtractListAdapter(
-    private val extractResponse: List<ExtractResponse?>,
+    private val extractList: List<Extract>,
     private val onExtractItemClickListener: OnExtractItemClickListener
 ) : RecyclerView.Adapter<ExtractListAdapter.ExtractListViewHolder>() {
 
@@ -28,11 +28,11 @@ class ExtractListAdapter(
     }
 
     override fun onBindViewHolder(holder: ExtractListViewHolder, position: Int) {
-        holder.bind(extractResponse[position], onExtractItemClickListener)
+        holder.bind(extractList[position], onExtractItemClickListener)
     }
 
     override fun getItemCount(): Int {
-        return extractResponse.size
+        return extractList.size
     }
 
     class ExtractListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -46,15 +46,15 @@ class ExtractListAdapter(
             itemView.findViewById(R.id.itemExtractMoneyTextView)
 
         fun bind(
-            extractResponse: ExtractResponse?,
+            extractList: Extract,
             onExtractItemClickListener: OnExtractItemClickListener
         ) {
-            itemExtractBankTransactionTypeTextView.text = extractResponse?.description
-            itemExtractNameTextView.text = extractResponse?.to
-            itemExtractDateTextView.text = extractResponse?.createdAt.toString()
-            itemExtractMoneyTextView.text = extractResponse?.amount.toString()
+            itemExtractBankTransactionTypeTextView.text = extractList.description
+            itemExtractNameTextView.text = extractList.to
+            itemExtractDateTextView.text = extractList.createdAt.toString()
+            itemExtractMoneyTextView.text = extractList.amount.toString()
             itemView.setOnClickListener {
-                onExtractItemClickListener.onClick(extractResponse?.id)
+                onExtractItemClickListener.onClick(extractList.id)
             }
         }
     }
