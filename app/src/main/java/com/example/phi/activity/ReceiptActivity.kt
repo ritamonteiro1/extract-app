@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
 import com.example.phi.R
+import com.example.phi.constants.Constants
 
 class ReceiptActivity : AppCompatActivity() {
     private var receiptToolBar: Toolbar? = null
@@ -18,6 +19,11 @@ class ReceiptActivity : AppCompatActivity() {
         setContentView(R.layout.activity_receipt)
         findViewsById()
         setupToolBar()
+        val idExtract = retrieverIdExtract()
+    }
+
+    private fun retrieverIdExtract() {
+        intent.getStringExtra(Constants.ID_EXTRACT)
     }
 
     private fun setupToolBar() {

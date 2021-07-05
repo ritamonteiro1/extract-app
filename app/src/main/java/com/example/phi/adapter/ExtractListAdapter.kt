@@ -36,7 +36,7 @@ class ExtractListAdapter(
         return extractList.size
     }
 
-    class ExtractListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ExtractListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val itemExtractBankTransactionTypeTextView: TextView =
             itemView.findViewById(R.id.itemExtractBankTransactionTypeTextView)
         private val itemExtractNameTextView: TextView =
