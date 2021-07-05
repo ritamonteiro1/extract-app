@@ -9,9 +9,8 @@ import com.example.phi.R
 import com.example.phi.api.Api
 import com.example.phi.api.DataService
 import com.example.phi.constants.Constants
-import com.example.phi.domains.Amount
-import com.example.phi.domains.AmountResponse
-import com.example.phi.domains.ExtractListResponse
+import com.example.phi.domains.amount.Amount
+import com.example.phi.domains.amount.AmountResponse
 import com.example.phi.extensions.convertInToMoney
 import com.example.phi.extensions.setAlertDialog
 import retrofit2.Call

@@ -1,8 +1,8 @@
 package com.example.phi.api
 
-import com.example.phi.domains.AmountResponse
-import com.example.phi.domains.DetailsExtractResponse
-import com.example.phi.domains.ExtractListResponse
+import com.example.phi.domains.amount.AmountResponse
+import com.example.phi.domains.details.extract.DetailsExtractResponse
+import com.example.phi.domains.extract.list.ExtractListResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header

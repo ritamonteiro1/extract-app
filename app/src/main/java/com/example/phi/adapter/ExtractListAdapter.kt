@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.phi.R
 import com.example.phi.click.listener.OnExtractItemClickListener
-import com.example.phi.domains.Extract
+import com.example.phi.domains.extract.Extract
 
 class ExtractListAdapter(
     private val extractList: List<Extract>,

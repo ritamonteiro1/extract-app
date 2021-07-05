@@ -1,3 +1,3 @@
-package com.example.phi.domains
+package com.example.phi.domains.amount
 
 data class AmountResponse(val amount: Int?)

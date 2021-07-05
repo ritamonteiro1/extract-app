@@ -1,4 +1,4 @@
-package com.example.phi.domains
+package com.example.phi.domains.extract
 
 import java.util.*
 
