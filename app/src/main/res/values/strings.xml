@@ -7,8 +7,13 @@
     <!--    activity_receipt.xml -->
     <string name="receipt_title_text">Comprovante</string>
     <string name="receipt_button_text">Compartilhar</string>
-    <!--    ExtractActivity -->
-    <!--    ReceiptActivity -->
+    <string name="receipt_bank_transaction_type_text">Tipo de movimentação bancária</string>
+    <string name="receipt_value_text">Valor</string>
+    <string name="receipt_receiver_text">Recebedor</string>
+    <string name="receipt_banking_institution">Instituição bancária</string>
+    <string name="receipt_date_and_time_text">Data/Hora</string>
+    <string name="receipt_authentication_text">Autenticação</string>
+    <string name="receipt_bank_name_text">Banco</string>
     <!--    Generics error -->
     <string name="error_connection_fail">Falha na conexão. Tente novamente</string>
     <string name="alert_dialog_text">OK</string>
