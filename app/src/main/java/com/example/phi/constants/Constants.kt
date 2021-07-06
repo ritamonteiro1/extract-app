@@ -7,5 +7,6 @@ class Constants {
         const val NULL_AMOUNT_EXTRACT_RESPONSE = -1
         const val ID_EXTRACT = "id extract"
         const val NULL_AMOUNT_DETAILS_EXTRACT_RESPONSE = -1
+        const val EMPTY = ""
     }
 }

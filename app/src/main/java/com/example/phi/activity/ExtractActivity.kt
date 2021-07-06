@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -33,12 +34,19 @@ class ExtractActivity : AppCompatActivity() {
     private var extractAccountBalanceTextView: TextView? = null
     private var extractRecyclerView: RecyclerView? = null
     private var loadingDialog: Dialog? = null
+    private var extractToolBar: Toolbar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_extract)
         findViewsById()
         loadingDialog = this.setAlertDialog()
+        setupToolBar()
+    }
+
+    private fun setupToolBar() {
+        setSupportActionBar(extractToolBar)
+        supportActionBar?.title = getString(R.string.extract_tool_bar_title)
     }
 
     override fun onStart() {
@@ -163,5 +171,6 @@ class ExtractActivity : AppCompatActivity() {
     private fun findViewsById() {
         extractAccountBalanceTextView = findViewById(R.id.extractAccountBalanceTextView)
         extractRecyclerView = findViewById(R.id.extractRecyclerView)
+        extractToolBar = findViewById(R.id.extractToolBar)
     }
 }

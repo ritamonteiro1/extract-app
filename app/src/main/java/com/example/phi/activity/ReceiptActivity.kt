@@ -44,9 +44,12 @@ class ReceiptActivity : AppCompatActivity() {
         setContentView(R.layout.activity_receipt)
         findViewsById()
         loadingDialog = this.setAlertDialog()
+        loadingDialog?.show()
         setupToolBar()
         val idExtract: String? = retrieverIdExtract()
-        if (idExtract != null) showDetailsExtract(idExtract)
+        idExtract?.let {
+            showDetailsExtract(it)
+        }
     }
 
     private fun showDetailsExtract(idExtract: String) {
@@ -60,7 +63,6 @@ class ReceiptActivity : AppCompatActivity() {
             ) {
                 loadingDialog?.dismiss()
                 if (response.isSuccessful && response.body() != null) {
-                    setVisibilityVisibleViews()
                     val detailsExtractResponse = response.body()
                     val detailsExtract = DetailsExtract(
                         detailsExtractResponse?.amount
@@ -73,6 +75,7 @@ class ReceiptActivity : AppCompatActivity() {
                         detailsExtractResponse?.description.orEmpty()
                     )
                     showReceipt(detailsExtract)
+                    setVisibilityVisibleViews()
                 } else {
                     setVisibilityGoneViews()
                     this@ReceiptActivity.showErrorDialog(
@@ -114,14 +117,14 @@ class ReceiptActivity : AppCompatActivity() {
     }
 
     private fun setVisibilityVisibleViews() {
+        receiptReceiverTextView?.visibility = View.VISIBLE
+        receiptReceiverNameTextView?.visibility = View.VISIBLE
         receiptButton?.visibility = View.VISIBLE
         receiptBankTextView?.visibility = View.VISIBLE
         receiptAmountTextView?.visibility = View.VISIBLE
         receiptBankTransactionTypeTextView?.visibility = View.VISIBLE
         receiptBankTransactionTextView?.visibility = View.VISIBLE
         receiptTransactionAmountTextView?.visibility = View.VISIBLE
-        receiptReceiverTextView?.visibility = View.VISIBLE
-        receiptReceiverNameTextView?.visibility = View.VISIBLE
         receiptBankingInstitutionTextView?.visibility = View.VISIBLE
         receiptDateAndTimeTextView?.visibility = View.VISIBLE
         receiptDateTextView?.visibility = View.VISIBLE
@@ -133,6 +136,7 @@ class ReceiptActivity : AppCompatActivity() {
 
     private fun setupToolBar() {
         setSupportActionBar(receiptToolBar)
+        supportActionBar?.title = Constants.EMPTY
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
